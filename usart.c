@@ -20,7 +20,7 @@ void write_usart (char *mas, uint16_t n)
 	for(uint16_t i=0; i<n; i++ )
 	{
 		while ( !(UCSR0A & (1<<UDRE0)) )
-				;
+			;
 
 		UDR0 = mas[i];
 		if (mas[i] == '\0')
@@ -34,7 +34,7 @@ void read_usart (void *mas, uint16_t n)
 	for (uint16_t i=0; i<n; i++)
 	{
 		while ( !(UCSR0A & (1<<RXC0)) )
-				;
+			;
 
 		((uint8_t*)mas)[i] = UDR0;
 	}
